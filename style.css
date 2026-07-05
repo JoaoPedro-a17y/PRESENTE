@@ -63,7 +63,8 @@ header::after {
 /* Estrutura de cada bloco (Imagem + Texto) */
 .item-galeria {
     display: flex;
-    align-items: center;
+    /* PRIMEIRA OPÇÃO INCLUSA: Força o alinhamento completo mesmo com textos longos */
+    align-items: stretch; 
     /* Rosa Choque / Pink Neon bem vibrante e festivo nos quadrados */
     background: #ff007f; 
     border-radius: 16px;
@@ -92,7 +93,8 @@ header::after {
 .imagem-container {
     flex: 1;
     min-width: 300px;
-    height: 280px;
+    /* Remove a altura fixa para deixar o 'stretch' controlar a expansão */
+    height: auto; 
     overflow: hidden;
     background: transparent; 
 }
@@ -100,7 +102,8 @@ header::after {
 .imagem-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* Faz a foto cobrir o quadrado todo preenchendo 100% do espaço */
+    object-fit: cover; 
     display: block;
     transition: transform 0.5s ease;
 }
@@ -185,10 +188,11 @@ footer {
 @media (max-width: 768px) {
     .item-galeria, .item-galeria:nth-child(even) {
         flex-direction: column;
+        align-items: initial;
     }
     .imagem-container {
         width: 100%;
-        height: 220px;
+        height: 250px; /* Garante tamanho bom em celulares */
     }
     .texto-container {
         padding: 25px;
