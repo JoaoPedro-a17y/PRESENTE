@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presente</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Feito com amor</h1>
+        </header>
+
+        <!-- O JavaScript vai injetar os itens aqui dentro -->
+        <main id="galeria"></main>
+    </div>
+
+    <script>
+        // Dados do site (Você pode adicionar ou remover itens aqui)
+        const itensGaleria = [
+            {
+                titulo: "Primeiro Elemento",
+                descricao: "Este é o texto descritivo do primeiro elemento. Usando JavaScript, nós criamos essa estrutura dinamicamente no HTML. O CSS garante que a imagem fique perfeitamente alinhada ao lado deste bloco de texto.",
+                imagem: "FOTOS/FOTO6.jpg"
+            },
+            {
+                titulo: "Segundo Elemento",
+                descricao: "Aqui está o segundo elemento da lista. Note que o CSS inverteu automaticamente a ordem (imagem na direita, texto na esquerda) para criar um layout alternado mais elegante e moderno.",
+                imagem: "FOTOS/FOTO5.jpg"
+            },
+            {
+                titulo: "Terceiro Elemento",
+                descricao: "Mais um exemplo de conteúdo estruturado. Você pode facilmente substituir os links das imagens e os textos dentro do array do JavaScript para atualizar todo o seu site rapidamente.",
+                imagem: "https://picsum.photos"
+            }
+        ];
+
+        // Função para renderizar os itens na tela
+        function carregarGaleria() {
+            const galeriaContainer = document.getElementById('galeria');
+            
+            // Limpa o container antes de renderizar
+            galeriaContainer.innerHTML = '';
+
+            // Mapeia o array e cria o HTML de cada item
+            itensGaleria.forEach(item => {
+                const estruturaHtml = `
+                    <section class="item-galeria">
+                        <div class="imagem-container">
+                            <img src="${item.imagem}" alt="${item.titulo}">
+                        </div>
+                        <div class="texto-container">
+                            <h2>${item.titulo}</h2>
+                            <p>${item.descricao}</p>
+                        </div>
+                    </section>
+                `;
+                
+                // Adiciona o item ao container principal
+                galeriaContainer.innerHTML += estruturaHtml;
+            });
+        }
+
+        // Executa a função assim que a página carrega
+        window.onload = carregarGaleria;
+    </script>
+</body>
+</html>
